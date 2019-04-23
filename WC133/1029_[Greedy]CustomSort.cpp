@@ -18,3 +18,23 @@ public:
         return res;
     }
 };
+
+
+// My solution
+
+class Solution {
+public:
+    int twoCitySchedCost(vector<vector<int>>& costs) {
+        int ret = 0;
+        sort(costs.begin(), costs.end(), cmp);
+        for(int k=0;k<costs.size()/2;k++) ret += costs[k][0];
+        for(int k=costs.size()/2;k<costs.size();k++) ret += costs[k][1];
+       return ret;
+    }
+    
+    static bool cmp(vector<int>& A, vector<int>& B){
+        return (A[0]-A[1]) < (B[0]-B[1]);
+    }
+};
+
+// costs[i][0] - costs[i][1] if minus -> should go to city B. Costs[i][1]
